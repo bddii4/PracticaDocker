@@ -1,0 +1,16 @@
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # TODO: cambiar por la URL del repo donde fusionaron los componentes
+        REPO_URL: https://github.com/bddii4/Practicagit.git
+        BRANCH: main
+        # TODO: nombre del proyecto en angular.json (carpeta dentro de dist/)
+        APP_NAME: Practicagit
+    image: angular-nginx-app:1.0
+    container_name: angular-nginx-app
+    ports:
+      - "8080:80"
+    restart: unless-stopped
